@@ -8,18 +8,16 @@
   - Back button works naturally
   - Forward button works naturally
 */
-console.log("JS IS RUNNING");
-
-document.querySelector(".role-public").addEventListener("click", () => {
-  console.log("PUBLIC CLICKED");
-});
-
 
 const screens = {
   intro: document.getElementById("screen-intro"),
   public: document.getElementById("screen-public"),
+  "public-detail": document.getElementById("screen-public-detail"),
   student: document.getElementById("screen-student"),
-  lawyer: document.getElementById("screen-lawyer")
+  "student-detail": document.getElementById("screen-student-detail"),
+  lawyer: document.getElementById("screen-lawyer"),
+  "lawyer-detail": document.getElementById("screen-lawyer-detail"),
+
 };
 
 /* -----------------------------------------------------
@@ -73,75 +71,146 @@ document.querySelector(".role-lawyer").addEventListener("click", () => {
   navigateTo("lawyer");
 });
 
-/* -----------------------------------------------------
-   PUBLIC DASHBOARD OPTION HANDLING
------------------------------------------------------ */
+/* =====================================================
+   PUBLIC OPTION → SUB-SCREEN NAVIGATION
+   ===================================================== */
 
-const publicOptions = document.querySelectorAll(".public-option");
-const publicDetailArea = document.querySelector(".public-detail-area");
+const publicDetailScreen = document.getElementById("screen-public-detail");
+const publicDetailContent = document.getElementById("public-detail-content");
 
-/*
-  When a public option is clicked:
-  - Highlight the option
-  - Show contextual content below
-*/
-publicOptions.forEach(option => {
+document.querySelectorAll(".public-option").forEach(option => {
   option.addEventListener("click", () => {
 
-    // Remove highlight from all options
-    publicOptions.forEach(opt => opt.classList.remove("active"));
+    let title = "";
+    let line1 = "";
+    let line2 = "";
 
-    // Highlight selected option
-    option.classList.add("active");
-
-    // Decide content based on option type
     if (option.classList.contains("option-ai")) {
-      renderPublicDetail(
-        "Legal Guidance Assistant",
-        "No conversations yet.",
-        "Describe your situation in simple language to receive general legal information."
-      );
+      title = "Legal Guidance Assistant";
+      line1 = "No conversations yet.";
+      line2 = "Describe your situation to receive general legal information.";
     }
 
     if (option.classList.contains("option-lawyer")) {
-      renderPublicDetail(
-        "Connect with a Lawyer",
-        "You have not contacted any lawyers yet.",
-        "Verified advocates relevant to your issue will appear here."
-      );
+      title = "Connect with a Lawyer";
+      line1 = "You have not contacted any lawyers yet.";
+      line2 = "Verified advocates relevant to your issue will appear here.";
     }
 
     if (option.classList.contains("option-cases")) {
-      renderPublicDetail(
-        "My Legal Cases",
-        "No registered or ongoing cases found.",
-        "Once a case is added, its progress will be shown here."
-      );
+      title = "My Legal Cases";
+      line1 = "No registered or ongoing cases found.";
+      line2 = "Your case progress will appear here once added.";
     }
 
     if (option.classList.contains("option-evidence")) {
-      renderPublicDetail(
-        "My Evidence Vault",
-        "You have not stored any evidence yet.",
-        "Documents, photos, and videos will be recorded with date and integrity metadata."
-      );
+      title = "My Evidence Vault";
+      line1 = "You have not stored any evidence yet.";
+      line2 = "Uploaded files will include date, time, and integrity metadata.";
     }
+
+    publicDetailContent.innerHTML = `
+      <article class="detail-panel">
+        <h4>${title}</h4>
+        <p>${line1}</p>
+        <p>${line2}</p>
+      </article>
+    `;
+
+    navigateTo("public-detail");
   });
 });
+/* =====================================================
+   STUDENT MODULE → SUB-SCREEN NAVIGATION
+   ===================================================== */
 
-/* -----------------------------------------------------
-   PUBLIC DETAIL RENDER FUNCTION
------------------------------------------------------ */
+const studentDetailContent = document.getElementById("student-detail-content");
 
-function renderPublicDetail(title, line1, line2) {
-  publicDetailArea.innerHTML = `
-    <article class="detail-panel">
-      <h4>${title}</h4>
-      <p>${line1}</p>
-      <p>${line2}</p>
-    </article>
-  `;
-}
+document
+  .querySelectorAll("#screen-student .student-module")
+  .forEach(module => {
+
+  module.addEventListener("click", () => {
+
+    let title = "";
+    let body = "";
+
+    if (module.classList.contains("module-constitution")) {
+      title = "Constitution Explorer";
+      body = "Browse simplified explanations of constitutional principles, rights, and duties.";
+    }
+
+    if (module.classList.contains("module-cases")) {
+      title = "Landmark Judgments";
+      body = "Study judicial reasoning, doctrines, and constitutional interpretation through key cases.";
+    }
+
+    if (module.classList.contains("module-sections")) {
+      title = "Section Lookup";
+      body = "Search statutory provisions for academic understanding and exam preparation.";
+    }
+
+    studentDetailContent.innerHTML = `
+      <article class="student-module">
+        <h3>${title}</h3>
+        <p>${body}</p>
+        <p class="judicial-note">
+          Content is for educational purposes only.
+        </p>
+      </article>
+    `;
+
+    navigateTo("student-detail");
+  });
+});
+/* =====================================================
+   LAWYER MODULE → SUB-SCREEN NAVIGATION
+   ===================================================== */
+
+const lawyerDetailContent = document.getElementById("lawyer-detail-content");
+
+document
+  .querySelectorAll("#screen-lawyer .lawyer-module")
+  .forEach(module => {
+
+  module.addEventListener("click", () => {
+
+    let title = "";
+    let body = "";
+
+    if (module.classList.contains("module-clients")) {
+      title = "Client Intake";
+      body = "View incoming client requests and manage case onboarding.";
+    }
+
+    if (module.classList.contains("module-assistant")) {
+      title = "Case Assistant";
+      body = "Analyze issues, review relevant provisions, and prepare case strategy.";
+    }
+
+    if (module.classList.contains("module-drafts")) {
+      title = "Draft Support";
+      body = "Access structured drafting guidance for pleadings and legal documents.";
+    }
+
+    if (module.classList.contains("module-overview")) {
+      title = "Practice Overview";
+      body = "Monitor your professional activity and workload summary.";
+    }
+
+    lawyerDetailContent.innerHTML = `
+      <section class="lawyer-module">
+        <h3>${title}</h3>
+        <p>${body}</p>
+        <p class="judicial-note">
+          Professional use only. Final responsibility rests with the advocate.
+        </p>
+      </section>
+    `;
+
+    navigateTo("lawyer-detail");
+  });
+});
 
 /* -----------------------------------------------------
    BROWSER BACK / FORWARD HANDLING
