@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Justivo | Legal Clarity for Everyone</title>
+
+  <!-- ============================================
+       CORE STYLESHEET
+       Path matches your structure: css/style.css
+       ============================================ -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- ============================================
+       META (optional but good practice)
+       ============================================ -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+
+<!-- =====================================================
+     JUSTIVO APPLICATION ROOT
+     ===================================================== -->
+<div id="justivo-app">
+
+  <!-- ===================================================
+       INTRO / LANDING SCREEN
+       =================================================== -->
+  <!--
+    This is the FIRST visible screen.
+    It MUST have the class "active" on initial load.
+  -->
+  <section id="screen-intro" class="screen intro-screen active">
+
+    <!-- Brand Block -->
+    <div class="intro-brand">
+      <h1 class="brand-logo">JUSTIVO</h1>
+      <p class="brand-tagline">Legal clarity for everyone</p>
+    </div>
+
+    <!-- Role Selection -->
+    <div class="intro-roles">
+
+      <!-- Public Role -->
+      <button class="role-btn role-public">
+        Public
+      </button>
+
+      <!-- Law Student Role -->
+      <button class="role-btn role-student">
+        Law Student
+      </button>
+
+      <!-- Lawyer Role -->
+      <button class="role-btn role-lawyer">
+        Lawyer
+      </button>
+
+    </div>
+  </section>
+
+  <!-- ===================================================
+       PUBLIC DASHBOARD
+       =================================================== -->
+  <section id="screen-public" class="screen public-screen">
+
+    <!-- Top Bar -->
+    <header class="topbar topbar-public">
+      <div class="topbar-logo">JUSTIVO</div>
+    </header>
+
+    <!-- Context Header -->
+    <div class="context-header public-context">
+      <h2 class="context-title">Public Legal Access</h2>
+      <p class="context-subtitle">
+        Understand your rights, get guidance, and manage legal information securely.
+      </p>
+    </div>
+
+    <!-- Public Options -->
+    <div class="public-options">
+
+      <!-- AI Legal Assistant -->
+      <div class="public-option option-ai">
+        <h3>Legal Guidance Assistant</h3>
+        <p>
+          Explain your situation in simple language and receive general legal information.
+        </p>
+      </div>
+
+      <!-- Connect Lawyer -->
+      <div class="public-option option-lawyer">
+        <h3>Connect with a Lawyer</h3>
+        <p>
+          Discover verified advocates suitable for your issue.
+        </p>
+      </div>
+
+      <!-- My Legal Cases -->
+      <div class="public-option option-cases">
+        <h3>My Legal Cases</h3>
+        <p>
+          View and track your registered or ongoing cases.
+        </p>
+      </div>
+
+      <!-- Evidence Vault -->
+      <div class="public-option option-evidence">
+        <h3>My Evidence Vault</h3>
+        <p>
+          Securely store documents, photos, and videos with integrity metadata.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Detail Area (dynamic content injected by JS) -->
+    <div class="public-detail-area">
+      <article class="detail-panel">
+        <h4>Welcome</h4>
+        <p>Select an option above to continue.</p>
+      </article>
+    </div>
+
+  </section>
+
+  <!-- ===================================================
+       LAW STUDENT DASHBOARD
+       =================================================== -->
+  <section id="screen-student" class="screen student-screen">
+
+    <!-- Top Bar -->
+    <header class="topbar topbar-student">
+      <div class="topbar-logo">JUSTIVO</div>
+    </header>
+
+    <!-- Context Header -->
+    <div class="context-header student-context">
+      <h2>Law Student Workspace</h2>
+      <p>
+        Explore constitutional principles, landmark judgments,
+        and statutory provisions with clarity.
+      </p>
+    </div>
+
+    <!-- Student Modules -->
+    <div class="student-modules">
+
+      <!-- Constitution Explorer -->
+      <section class="student-module module-constitution">
+        <h3>Constitution Explorer</h3>
+        <p>
+          Simplified understanding of core constitutional values.
+        </p>
+        <ul class="constitution-list">
+          <li>Right to Equality – Scope and interpretation</li>
+          <li>Right to Freedom – Articles 19 to 22</li>
+          <li>Fundamental Duties – Civic responsibility</li>
+        </ul>
+      </section>
+
+      <!-- Landmark Judgments -->
+      <section class="student-module module-cases">
+        <h3>Landmark Judicial Decisions</h3>
+
+        <article class="case-card">
+          <h4>Kesavananda Bharati v. State of Kerala</h4>
+          <p>
+            Introduced the Basic Structure doctrine,
+            limiting Parliament’s amending power.
+          </p>
+        </article>
+
+        <article class="case-card">
+          <h4>Maneka Gandhi v. Union of India</h4>
+          <p>
+            Expanded Article 21 and emphasized fairness,
+            reasonableness, and due process.
+          </p>
+        </article>
+
+        <p class="judicial-note">
+          Recent courts emphasize constitutional morality,
+          proportionality, and individual dignity.
+        </p>
+      </section>
+
+      <!-- Section Lookup -->
+      <section class="student-module module-sections">
+        <h3>Section Lookup</h3>
+        <p>
+          Quickly understand statutory provisions for academic reference.
+        </p>
+        <p class="empty-state">
+          Search a section number to view explanation.
+        </p>
+      </section>
+
+    </div>
+  </section>
+
+  <!-- ===================================================
+       LAWYER DASHBOARD
+       =================================================== -->
+  <section id="screen-lawyer" class="screen lawyer-screen">
+
+    <!-- Top Bar -->
+    <header class="topbar topbar-lawyer">
+      <div class="topbar-logo">JUSTIVO</div>
+    </header>
+
+    <!-- Context Header -->
+    <div class="context-header lawyer-context">
+      <h2>Lawyer Dashboard</h2>
+      <p>
+        Manage clients, analyze cases, and prepare efficiently.
+      </p>
+    </div>
+
+    <!-- Lawyer Modules -->
+    <div class="lawyer-modules">
+
+      <!-- Client Intake -->
+      <section class="lawyer-module module-clients">
+        <h3>Client Intake</h3>
+        <p>
+          No clients added yet.
+          Incoming client requests will appear here.
+        </p>
+      </section>
+
+      <!-- Case Assistant -->
+      <section class="lawyer-module module-assistant">
+        <h3>Case Assistant</h3>
+        <p>
+          Enter a case issue to view relevant sections
+          and similar precedents.
+        </p>
+      </section>
+
+      <!-- Draft Support -->
+      <section class="lawyer-module module-drafts">
+        <h3>Draft Support</h3>
+        <p>
+          Document outlines and drafting guidance
+          will be available here.
+        </p>
+      </section>
+
+      <!-- Practice Overview -->
+      <section class="lawyer-module module-overview">
+        <h3>Practice Overview</h3>
+        <p>
+          Your professional activity summary
+          will be displayed here.
+        </p>
+      </section>
+
+    </div>
+  </section>
+
+</div>
+<!-- ================= END JUSTIVO APP =================== -->
+
+<!-- =====================================================
+     CORE JAVASCRIPT FILES
+     Paths match your structure exactly
+     ===================================================== -->
+<script src="js/app.js"></script>
+<script src="js/ai.js"></script>
+<script src="js/lawyer.js"></script>
+<script src="js/evidence.js"></script>
+<script src="js/constitution.js"></script>
+
+</body>
+</html>
